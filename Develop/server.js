@@ -1,19 +1,21 @@
-var PORT  = process.env.PORT || 8080;
+var express = require("express");
+var path = require("path");
+var apiroutes = require("./routes/apiroutes");
+var htmlroutes = require("./routes/htmlroutes");
 
+// Sets up the Express App
+// =============================================================
+var app = express();
+var PORT = 3000;
+
+// Sets up the Express app to handle data parsing
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.static("public"));
+app.use("/api", apiroutes);
+app.use("/", htmlroutes);
 
 
 app.listen(PORT, function() {
-    
-})
-
-app.get("/notes", function(req, res) {
-
-    res.json(path.join(__dirname, "public/index.html"));
-
-});
-
-app.get("*", function(req, res) {
-
-    res.json(path.join(__dirname, "public/notes.html"));
-
-});
+    console.log("App listening on PORT " + PORT);
+  });
