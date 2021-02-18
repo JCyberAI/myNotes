@@ -1,5 +1,6 @@
 const util = require("util");
 const fs = require("fs");
+const path = require("path");
 const uuid = require("uuid");
 const readFile = util.promisify(fs.readFile);
 const writeFile = util.promisify(fs.writeFile);
@@ -9,7 +10,7 @@ class Note {
 
     read() {
 
-        return readFile("db/db.json", "utf8")
+        return readFile("db/db.json", "UTF-8")
 
     }
 
@@ -38,7 +39,7 @@ class Note {
 
     }
 
-    addNote(note) {
+    addNote (note) {
 
         const {text, title} = note
         const newNote = {text, title}
