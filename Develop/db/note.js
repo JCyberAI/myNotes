@@ -1,6 +1,6 @@
 const util = require("util");
 const fs = require("fs");
-const uuid = require("uuid");
+const uuid = require("unpipe");
 const readFile = util.promisify(fs.readFile);
 const writeFile = util.promisify(fs.writeFile);
 
@@ -52,7 +52,7 @@ class Note {
     removeNote(id) {
 
         return this.getNotes()
-        .then((notes) => notes.filter((note) => note.id !== id))
+        .then((notes) => notes.filter((note) => uuid !== id))
         .then((filteredNotes) => this.write(filteredNotes))
 
     }
