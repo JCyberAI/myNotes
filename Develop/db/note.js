@@ -50,10 +50,10 @@ class Note {
 
     }
 
-    removeNote(id) {
+    removeNote(uuid) {
 
         return this.getNotes()
-        .then((notes) => notes.filter((note) => uuid !== id))
+        .then((notes) => notes.filter((note) => uuid))
         .then((filteredNotes) => this.write(filteredNotes))
 
     }
